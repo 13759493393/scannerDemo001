@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .container {
+            width: 100%;
+            text-align: center;
+            line-height: 300%;
+            font-size: 1.5rem;
+            background-color: red;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div class="container" onclick="openScanner()">
+    APICloud Demo001
+</div>
+</body>
+
+<script>
+
+    function openScanner() {
+        // alert("open the scanner");
+        api.confirm({
+            "title": "apicloudExercise",
+            "msg": "是否开启二维码扫描器",
+            "buttons": ["确定", "取消"]
+        }, function (ret, err) {
+            if (ret.buttonIndex == 1) {
+                var scanner = api.require("scanner");
+                scanner.open();
+            } else {
+                //do nothing!
+            }
+        })
+
+    }
+
+</script>
+
+</html>
